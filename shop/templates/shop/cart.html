@@ -1,0 +1,39 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="mb-4">Shopping Cart</h1>
+  {% if user_cart %}
+  <p><strong>Total Price:</strong> ${{ total_price }}</p>
+  <div class="cart-items">
+    {% for item in user_cart %}
+    <div class="cart-item">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid cart-item-image">
+        </div>
+        <div class="col-md-6">
+          <h4><a href="{% url 'shop:product_detail' pk=item.product.pk %}">{{ item.product.name }}</a></h4>
+          <p>Price: ${{ item.product.price }} | Quantity: {{ item.quantity }}</p>
+        </div>
+        <div class="col-md-2">
+          <form action="{% url 'shop:cart_remove' product_id=item.product.pk %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ item.product.pk }}">
+            <button type="submit" class="btn btn-danger btn-sm remove-button">Remove</button>
+        </form>
+        
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>Your cart is empty.</p>
+  {% endif %}
+  <a href="{% url 'shop:checkout' %}" class="btn btn-primary mt-3">Proceed to Checkout</a>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'shop/base.html' %}
+
+{% load custom_filters %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2 class="mb-4">Checkout</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in user_cart %}
+      <tr>
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>${{ item|calculate_total_price }}</td> <!-- Использование фильтра -->
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="2"><strong>Total Price:</strong></td>
+        <td>${{ total_price }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Place Order</button>
+  </form>
+</div>
+{% endblock %}

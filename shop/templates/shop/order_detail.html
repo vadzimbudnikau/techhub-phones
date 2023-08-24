@@ -1,0 +1,24 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Order Detail{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="order-detail">
+    <h1 class="order-detail__title">Order Detail</h1>
+    {% if order %}
+      <p class="order-detail__info"><strong>Order ID:</strong> {{ order.pk }}</p>
+      <p class="order-detail__info"><strong>Total Price:</strong> {{ order.total_price }}</p>
+      <h2 class="order-detail__products-title">Products:</h2>
+      <ul class="order-detail__product-list">
+        {% for product in order.products.all %}
+          <li class="order-detail__product-item">{{ product.name }} - ${{ product.price }}</li>
+        {% endfor %}
+      </ul>
+      <p>Thank you for your order! Your order has been placed with order ID: {{ order.pk }}.</p>
+    {% else %}
+      <p class="order-detail__info">No order found.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

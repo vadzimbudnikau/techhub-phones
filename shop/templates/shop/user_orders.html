@@ -1,0 +1,22 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Your Orders{% endblock %}
+
+{% block content %}
+  <div class="order-history">
+    <h1 class="order-history-title">Your Order History</h1>
+    {% if user_orders %}
+      <ul class="order-list">
+        {% for order in user_orders %}
+          <li class="order-item">
+            <a class="order-link" href="{% url 'shop:order_detail' pk=order.pk %}">
+              Order #{{ order.pk }} - Total Price: {{ order.total_price }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="no-orders">No orders found.</p>
+    {% endif %}
+  </div>
+{% endblock %}

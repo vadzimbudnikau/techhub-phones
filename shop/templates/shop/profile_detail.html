@@ -1,0 +1,32 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="profile-box">
+        <h2 class="profile-box__title">Your Profile</h2>
+        <div class="profile-info">
+            <div class="profile-avatar">
+                {% if profile.avatar %}
+                <img src="{{ profile.avatar.url }}" alt="Avatar" class="avatar-img">
+                {% else %}
+                <img src="{% static 'shop/img/default_avatar.png' %}" alt="Default Avatar" class="avatar-img">
+                {% endif %}
+            </div>
+            <p><strong>Username:</strong> {{ profile.user.username }}</p>
+            <p><strong>Sex:</strong> {{ profile.get_gender_display }}</p>
+            <p><strong>Email:</strong> {{ profile.email }}</p>
+            <p><strong>Phone:</strong> {{ profile.phone }}</p>
+            <p><strong>Payment Info:</strong> {{ profile.card_details }}</p>
+            <a class="profile-order-link" href="{% url 'shop:user_orders' %}">View Order History</a>
+        </div>
+        <div class="profile-buttons">
+            <a href="{% url 'shop:profile_update' %}" class="btn btn-primary">Edit Profile</a>
+            <button id="deleteProfileButton" class="btn btn-danger">Delete Profile</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
