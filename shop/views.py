@@ -5,7 +5,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.db import transaction
 from django.shortcuts import get_object_or_404, redirect, render
-from django.http import Http404
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import View
@@ -14,7 +13,6 @@ from django.views.generic import ListView, DetailView, TemplateView, CreateView,
 from django.db.models import Sum, Q
 from .models import Product, Cart, Order, UserProfile
 from .forms import UserProfileForm
-
 
 
 class HomeView(TemplateView):
@@ -61,6 +59,7 @@ class ProductCatalogView(ListView):
 
 class ProductDetailView(DetailView):
     """View to display the details of a specific product."""
+
     model = Product
     template_name = 'shop/product_detail.html'
 
@@ -240,4 +239,6 @@ def delete_profile(request):
 
 
 def page_not_found(request, exception):
+    """View function to handle 404 (page not found) errors."""
+
     return render(request, 'shop/404.html', status=404)

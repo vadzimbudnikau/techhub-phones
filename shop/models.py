@@ -3,9 +3,8 @@ from django.db import models
 
 
 class Product(models.Model):
-    """
-    Model representing a product in the online store.
-    """
+    """Model representing a product in the online store."""
+
     name = models.CharField(max_length=200)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -18,9 +17,8 @@ class Product(models.Model):
 
 
 class Order(models.Model):
-    """
-    Model representing an order placed by a user in the online store.
-    """
+    """Model representing an order placed by a user in the online store."""
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product)
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -31,9 +29,8 @@ class Order(models.Model):
 
 
 class Cart(models.Model):
-    """
-    Model representing the user's cart with selected products.
-    """
+    """Model representing the user's cart with selected products."""
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=0)
@@ -45,6 +42,8 @@ class Cart(models.Model):
 
 
 class UserProfile(models.Model):
+    """Model representing user profile information."""
+
     GENDER_CHOICES = [
         ('M', 'Male'),
         ('F', 'Female'),

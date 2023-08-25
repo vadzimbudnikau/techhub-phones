@@ -7,4 +7,4 @@ class ShopConfig(AppConfig):
 
     def ready(self):
         super().ready()
-        from . import signals  # Импорт файла signals.py
+        from . import signals
