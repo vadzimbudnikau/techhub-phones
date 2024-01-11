@@ -3,6 +3,8 @@ black==23.11.0
 click==8.1.7
 colorama==0.4.6
 Django==4.2.4
+django-environ==0.11.2
+environ==1.0
 mypy-extensions==1.0.0
 packaging==23.2
 pathspec==0.11.2
@@ -10,9 +12,7 @@ Pillow==10.0.0
 platformdirs==4.0.0
 psycopg2-binary==2.9.9
 python-decouple==3.8
-setuptools==68.2.2
 sqlparse==0.4.4
 tomli==2.0.1
 typing_extensions==4.8.0
 tzdata==2023.3
-wheel==0.41.3
