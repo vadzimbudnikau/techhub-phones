@@ -5,20 +5,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shop', '0004_alter_cart_quantity'),
+        ("shop", "0004_alter_cart_quantity"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='cart',
-            name='added_at',
+            model_name="cart",
+            name="added_at",
             field=models.DateTimeField(default=datetime.datetime(2023, 7, 20, 0, 0)),
         ),
         migrations.AddField(
-            model_name='cart',
-            name='order',
+            model_name="cart",
+            name="order",
             field=models.PositiveIntegerField(default=0),
         ),
     ]

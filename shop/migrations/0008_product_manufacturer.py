@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shop', '0007_userprofile'),
+        ("shop", "0007_userprofile"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='product',
-            name='manufacturer',
-            field=models.CharField(default='Unknown', max_length=100),
+            model_name="product",
+            name="manufacturer",
+            field=models.CharField(default="Unknown", max_length=100),
         ),
     ]

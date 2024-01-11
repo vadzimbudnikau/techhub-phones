@@ -3,11 +3,11 @@ services:
   web:
     image: onst  # Используйте ваш образ Django
     container_name: shop
-    command: python /OnSt/manage.py runserver 0.0.0.0:8000
+    command: python /online_store/manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
     volumes:
-      - .:/OnSt
+      - .:/online_store
     depends_on:
       - db
     environment:
@@ -16,7 +16,7 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
 
   db:
-    image: postgres:14.9
+    image: postgres:16
     volumes:
       - pg_data:/var/lib/postgresql/data
     environment:

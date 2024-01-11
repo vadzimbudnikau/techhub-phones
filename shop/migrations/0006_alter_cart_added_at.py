@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shop', '0005_cart_added_at_cart_order'),
+        ("shop", "0005_cart_added_at_cart_order"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='cart',
-            name='added_at',
+            model_name="cart",
+            name="added_at",
             field=models.DateTimeField(auto_now_add=True),
         ),
     ]

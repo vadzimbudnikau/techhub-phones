@@ -1,5 +1,5 @@
 # Используйте официальный образ Python
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 # Установите переменную окружения PYTHONUNBUFFERED для предотвращения буферизации вывода
 ENV PYTHONUNBUFFERED 1
